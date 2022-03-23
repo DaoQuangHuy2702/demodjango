@@ -1,0 +1,9 @@
+{% extends 'home/base.html' %}
+    {% block content %}
+        <h1>Thêm sách</h1>
+        <form action="{% url 'book:save' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ bf.as_p }}
+            <input type="submit" value="Add"/>
+        </form>
+    {% endblock %}
