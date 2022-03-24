@@ -1,0 +1,20 @@
+{% extends 'home/base.html' %}
+    {% block content %}
+        <h3 style="margin-bottom:30px">{{ bd.title }}</h3>
+        
+        <div class="detail_img" style="width:30%;height:30%;margin-bottom:30px">
+            <img src="{{ bd.image.url }}" style="width: 100%;height: 100%" alt="Card image cap">
+        </div>
+        
+        <div class="detai_body" style="margin-bottom:30px;font-size:18px">
+            <span style="margin-bottom:30px;font-weight:bold">Loại bìa: </span><span>{{ bd.coverType }}</span><br>
+            <span style="margin-bottom:30px;font-weight:bold">Giá: </span><span>{{ bd.price }}</span><br>
+            <span style="margin-bottom:30px;font-weight:bold">Giảm giá: </span><span>{{ bd.discount }}%</span><br>
+            <span style="margin-bottom:30px;font-weight:bold">Giới thiệu: </span><span>{{ bd.description }}</span><br>
+        </div>
+
+        <div class="detail_footer" style="margin-bottom:50px;font-size:18px">
+            <a class="btn btn-primary" href="{% url 'book:update' bd.id %}" style="margin-right:15px;" role="button">Cập nhật</a>
+            <a class="btn btn-danger" href="{% url 'book:delete' bd.id %}" role="button">Xóa</a>
+        </div>
+    {% endblock %}

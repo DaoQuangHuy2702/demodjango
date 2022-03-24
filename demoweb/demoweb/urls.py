@@ -23,7 +23,5 @@ urlpatterns = [
     path('', include('home.urls')),
     path('books/', include('book.urls')),
     path('laptops/', include('laptop.urls')),
-    path('phones/', include('phone.urls')),
-]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('phones/', include('phone.urls'))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
