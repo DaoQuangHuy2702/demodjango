@@ -1,0 +1,26 @@
+{% extends 'home/base.html' %}
+    {% block content %}
+        <h1>Thêm laptop</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <form action="{% url 'laptop:add' %}" method="post" enctype="multipart/form-data" class="form-group">
+                    {% csrf_token %}
+                    
+                    <label for="code">Mã laptop:</label>
+                    {{ lf.code }}
+                    <label for="name">Tên laptop:</label>
+                    {{ lf.name }}
+                    <label for="price">Giá:</label>
+                    {{ lf.price }}
+                    <label for="discount">Giảm giá (%):</label>
+                    {{ lf.discount }}
+                    <label for="image">Ảnh laptop:</label>
+                    {{ lf.image }}
+                    <label for="description">Mô tả laptop:</label>
+                    {{ lf.description }}
+
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 30px;">Thêm laptop</button>
+                </form>
+            </div>
+          </div>
+    {% endblock %}

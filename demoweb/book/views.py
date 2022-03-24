@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib import messages
 from .forms import bookForm
 from .models import bookModel
 from django.core.paginator import Paginator
@@ -29,7 +28,6 @@ def book_delete(request, id):
     bd = bookModel.objects.get(id = id)
     bd.delete()
 
-    messages.success(request, 'Xóa sản phẩm thành công')
     return redirect('book:book')
 
 def book_update(request, id):
