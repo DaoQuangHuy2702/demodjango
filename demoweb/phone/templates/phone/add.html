@@ -1,0 +1,26 @@
+{% extends 'home/base.html' %}
+    {% block content %}
+        <h1>Thêm điện thoại</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <form action="{% url 'phone:add' %}" method="post" enctype="multipart/form-data" class="form-group">
+                    {% csrf_token %}
+                    
+                    <label for="code">Mã điện thoại:</label>
+                    {{ pf.code }}
+                    <label for="name">Tên điện thoại:</label>
+                    {{ pf.name }}
+                    <label for="price">Giá:</label>
+                    {{ pf.price }}
+                    <label for="discount">Giảm giá (%):</label>
+                    {{ pf.discount }}
+                    <label for="image">Ảnh điện thoại:</label>
+                    {{ pf.image }}
+                    <label for="description">Mô tả điện thoại:</label>
+                    {{ pf.description }}
+
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 30px;">Thêm điện thoại</button>
+                </form>
+            </div>
+          </div>
+    {% endblock %}

@@ -1,4 +1,39 @@
 {% extends 'home/base.html' %}
     {% block content %}
         <h1>Điện thoại</h1>
+        <a class="btn btn-primary" href="{% url 'phone:add' %}" role="button" style="margin-bottom:30px">Thêm điện thoại</a>
+        <div class="row">
+            {% for item in page_obj %}
+                <div class="col-md-3">
+                    <div class="card" style="width: 100%;margin-bottom:30px">
+                        <img class="card-img-top" src="{{ item.image.url }}" style="width: 100%;height: 300px;" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ item.name|truncatechars:22 }}</h5>
+                          <p class="card-text">Giá bán: {{ item.price }}đ</p>
+                          <a href="{% url 'phone:detail' item.id %}" class="btn btn-primary">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="row" style="margin-bottom:50px">
+            <div class="col-sm-12">
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}">Trang trước</a>
+                        {% endif %}
+                        
+                        <span class="current">
+                            Trang {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}.
+                        </span>
+                
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">Trang tiếp theo</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
     {% endblock %}
